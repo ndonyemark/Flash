@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'users', 
-    'flashcards'
+    'flashcards',
+    'bootstrap4',
 ]
 
 MIDDLEWARE = [
