@@ -20,4 +20,4 @@ class FlashCards(models.Model):
         self.delete()
     
     def save_flash_card(self):
-        self.save
+        self.save()
