@@ -25,7 +25,7 @@ class FlashCards(models.Model):
     def __str__(self):
         return self.flash_title
 
-class CourseRegistration(models.Model):
+class Courses(models.Model):
     course_name=models.CharField(max_length=60)
 
     def __str__(self):

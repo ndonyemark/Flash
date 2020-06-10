@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
-from .forms import FlashCreationForm
-from .models import FlashCards
+from .forms import FlashCreationForm,CourseRegistrationForm
+from .models import FlashCards,Courses
 from django.contrib.auth.decorators import login_required
 
 @login_required
@@ -11,6 +11,7 @@ def index(request):
 @login_required
 def flash_creation(request):
     current_user=request.user
+    # courses=Courses.objects.all()
     if request.method == 'POST':
         form=FlashCreationForm(request.POST)
         if form.is_valid():  # and current_user=='small_bro'
@@ -41,3 +42,14 @@ def update_flash_card(request, flash_id):
         form.save()
         return redirect('index')
     return render(request, 'update_flash.html', {'form':form})
+
+@login_required
+def course_registration(request):
+    if request.method == 'POST':
+        form = CourseRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('register_course')
+    else:
+        form = CourseRegistrationForm()
+    return render(request, 'course_registration.html', {'form': form})
