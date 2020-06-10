@@ -21,3 +21,6 @@ class FlashCards(models.Model):
     
     def save_flash_card(self):
         self.save()
+
+    def __str__(self):
+        return self.flash_title
