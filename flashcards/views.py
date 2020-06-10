@@ -25,8 +25,8 @@ def delete_flash_card(request, flash_id):
     flash_card = FlashCards.objects.get(id=flash_id)
     if request.method == 'POST':
         flash_card.delete()
-        return redirect('index.html')
-    return render(request, 'delete_flash.html')
+        return redirect('index')
+    return render(request, 'delete_flash.html', {'flash_card':flash_card})
 
 def update_flash_card(request, flash_id):
     flash_card = FlashCards.objects.get(id=flash_id)
