@@ -1,12 +1,51 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h1>Hello there</h1>
+    <div class="container-fluid">
+
+        <div class="row mt-5">
+            <div class="col-lg-10"></div>
+            <div class="col-lg-1">
+                <a href="{% url 'post_flash' %}"><button type="button" class="btn btn-success"><i class="fa fa-plus" aria-hidden="true"></i>
+                </button></a>
             </div>
+            <div class="col-lg-1"></div>
         </div>
+
+        {% for flashcard in flash_cards %}
+            <div class="row mt-5">
+                <div class="col-md-1 col-xs-1 col-sm-1"></div>
+
+                <div class="col-md-7 col-xs-7 col-sm-7">
+                    <ul class="list-group">
+                        
+                        <li class="list-group-item">
+                            <a href="{% url 'view_flash' flashcard.id %}">
+                                <h5>{{flashcard.flash_title}}</h5>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div class="col-md-1 col-xs-1 col-sm-1">
+                    <a href="{% url 'view_flash' flashcard.id %}"><button type="button" class="btn btn-success btn-lg"><i class="fa fa-folder-open" aria-hidden="true"></i>
+                    </button></a>
+                </div>
+
+                <div class="col-md-1 col-xs-1 col-sm-1">
+                    <a href="{% url 'update_flash' flashcard.id %}"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-pencil" aria-hidden="true"></i>
+                    </button></a>
+                </div>
+
+                <div class="col-md-1 col-xs-1 col-sm-1">
+                    <a href="{% url 'delete_flash' flashcard.id %}"><button type="button" class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                    </button></a>
+                </div>
+
+            </div>
+        {% endfor %}
+            
     </div>
 {% endblock content %}
     

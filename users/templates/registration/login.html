@@ -11,17 +11,24 @@
     {% else %}
         <title>Login</title>
     {% endif %}
+    
+    {% block styles %}
+        {% bootstrap_css %}
+    {% endblock styles %}
         
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col">
-                <form action="">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <form action="" method="POST">
+                    {% csrf_token %}
                     {% bootstrap_form form %}
                     <button type="submit" class="btn btn-info">Login</button>
                 </form>
             </div>
+            <div class="col-lg-2"></div>
         </div>
     </div>
 </body>

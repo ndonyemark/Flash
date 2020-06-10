@@ -4,7 +4,7 @@ from .models import FlashCards
 
 def index(request):
     flash_cards=FlashCards.objects.all()
-    return render(request, 'index.html', flash_cards)
+    return render(request, 'index.html', {'flash_cards': flash_cards})
 
 def flash_creation(request):
     current_user=request.user
@@ -12,7 +12,7 @@ def flash_creation(request):
         form=FlashCreationForm(request.POST)
         if form.is_valid():  # and current_user=='small_bro'
             form.save()
-            return redirect('flash_creation')
+            return redirect('post_flash')
     else:
         form=FlashCreationForm()
     return render(request, 'flash_creation.html', {'form': form})
@@ -34,6 +34,4 @@ def update_flash_card(request, flash_id):
     if form.is_valid():
         form.save()
         return redirect('index')
-    return render(request, 'update_flash.html')
-
-
+    return render(request, 'update_flash.html', {'form':form})
