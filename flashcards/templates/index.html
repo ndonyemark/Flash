@@ -22,7 +22,12 @@
                         <li class="list-group-item">
                             <a href="{% url 'view_flash' flashcard.id %}">
                                 <h5>{{flashcard.flash_title}}</h5>
-                                <small class="text-info">last_updated: {{flashcard.date_updated}}</small>
+                                
+                                {% if flashcard.date_updated %}
+                                    <small class="text-info">last_updated: {{flashcard.date_updated}}</small>
+                                {% else %}
+                                    <small class="text-info">last_updated:{{flashcard.date_created}}</small>
+                                {% endif %}
                             </a>
                         </li>
 
