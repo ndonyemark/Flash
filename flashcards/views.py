@@ -30,7 +30,7 @@ def delete_flash_card(request, flash_id):
 
 def update_flash_card(request, flash_id):
     flash_card = FlashCards.objects.get(id=flash_id)
-    form = FlashCreationForm(request.POST, instance=flash_card)
+    form = FlashCreationForm(request.POST or None, instance=flash_card)
     if form.is_valid():
         form.save()
         return redirect('index')
