@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .forms import FlashCreationForm,CourseRegistrationForm
 from .models import FlashCards,Courses
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 
 @login_required
 def index(request):
@@ -39,7 +40,9 @@ def update_flash_card(request, flash_id):
     flash_card = FlashCards.objects.get(id=flash_id)
     form = FlashCreationForm(request.POST or None, instance=flash_card)
     if form.is_valid():
-        form.save()
+        form_save = form.save(commit=False)
+        form_save.date_updated = timezone.now()
+        form_save.save()
         return redirect('index')
     return render(request, 'update_flash.html', {'form':form})
 

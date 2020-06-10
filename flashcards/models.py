@@ -5,6 +5,7 @@ class FlashCards(models.Model):
     flash_course=models.CharField(max_length=40)
     flash_body=models.TextField()
     date_created=models.DateTimeField(auto_now_add=True)
+    date_updated=models.DateTimeField(auto_now_add=True)
 
     @classmethod
     def get_all_flash_cards(cls):
