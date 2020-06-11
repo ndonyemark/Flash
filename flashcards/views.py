@@ -17,7 +17,7 @@ def flash_creation(request):
         form=FlashCreationForm(request.POST)
         if form.is_valid():  # and current_user=='small_bro'
             form.save()
-            return redirect('post_flash')
+            return redirect('index')
     else:
         form=FlashCreationForm()
     return render(request, 'flash_creation.html', {'form': form})
