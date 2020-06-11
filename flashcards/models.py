@@ -2,7 +2,8 @@ from django.db import models
 
 class FlashCards(models.Model):
     flash_title=models.CharField(max_length=40)
-    flash_course=models.CharField(max_length=40)
+    FLASH_CHOICES=(('sciences', 'sciences'), ('languages', 'languages'), ('religious', 'religious'))
+    flash_course=models.CharField(max_length=40, choices= FLASH_CHOICES)
     flash_body=models.TextField()
     date_created=models.DateTimeField(auto_now_add=True)
     date_updated=models.DateTimeField(auto_now_add=True)
