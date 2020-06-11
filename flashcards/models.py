@@ -31,3 +31,6 @@ class Courses(models.Model):
 
     def __str__(self):
         return self.course_name
+
+class Test(models.Model):
+    pass
