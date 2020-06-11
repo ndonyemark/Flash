@@ -7,12 +7,13 @@ from django.utils import timezone
 @login_required
 def index(request):
     flash_cards=FlashCards.objects.all()
-    return render(request, 'index.html', {'flash_cards': flash_cards})
+    all_courses = Courses.objects.all()
+    return render(request, 'index.html', {'flash_cards': flash_cards, 'all_courses':all_courses})
 
 @login_required
 def flash_creation(request):
     current_user=request.user
-    # courses=Courses.objects.all()
+    all_courses = Courses.objects.all()
     if request.method == 'POST':
         form=FlashCreationForm(request.POST)
         if form.is_valid():  # and current_user=='small_bro'
@@ -20,7 +21,7 @@ def flash_creation(request):
             return redirect('index')
     else:
         form=FlashCreationForm()
-    return render(request, 'flash_creation.html', {'form': form})
+    return render(request, 'flash_creation.html', {'form': form,'all_courses':all_courses})
 
 @login_required
 def flash_detail(request, flash_id):
@@ -52,14 +53,7 @@ def course_registration(request):
         form = CourseRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('register_course')
+            return redirect('post_flash')
     else:
         form = CourseRegistrationForm()
     return render(request, 'course_registration.html', {'form': form})
-
-
-def get_courses(request, course ):
-    flash_cards=FlashCards.filter_by_course(course)
-    all_courses = Courses.objects.all()
-    message = f"{course}"
-    return render(request, 'course.html', {"message":message, "flash_cards":flash_cards, "all_courses":all_courses})

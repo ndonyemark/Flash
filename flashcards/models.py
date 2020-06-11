@@ -31,8 +31,3 @@ class Courses(models.Model):
 
     def __str__(self):
         return self.course_name
-
-    @classmethod
-    def filter_by_course(cls,course):
-        filtered_result = cls.objects.filter(course__course_name__icontains=course)
-        return filtered_result
