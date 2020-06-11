@@ -13,3 +13,7 @@ body {
     padding: 15px 25px;
     position: relative;
 }
+.jumbotron{
+    background-image: url('https://picsum.photos/1900/1267?grayscale');
+    color: black;
+}
