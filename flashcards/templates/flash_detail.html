@@ -1,18 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                      <li class="list-group-item">{{flash_card.flash_title}}</li>
-                      <li class="list-group-item">{{flash_card.flash_body}}</li>
-                      <li class="list-group-item">{{flash_card.date_created}}</li>
-                    </ul>
-                  </div>
-            </div>
+    <div class="container text-center"><br><br>
+    <h1 style='color:green'>View Flash Card details</h1>
+        <div class="heading">
+                {% if flash_card %}
+                    <h4>{{ flash_card.flash_title}}</h4><hr>
+                    <p >{{ flash_card.flash_body}}</p>
+                    <p><b>Course </b> :{{ flash_card.flash_course}} </p>
+                    <p><b>Time created: </b> {{flash_card.date_created}} </p>
+                    <p><b>Last Updated: </b> {{flash_card.date_updated}} </p>
+                {% endif %}
         </div>
     </div>
+
 {% endblock content %}
-    
