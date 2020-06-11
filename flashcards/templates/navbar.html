@@ -9,7 +9,18 @@
         <li class="nav-item active">
           <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item dropdown">
+          {% comment %} Location {% endcomment %}
+       <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Location
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            {% for location in all_locations %}
+                <li><a href="/location/{{location.country}}">{{location.country}}</a></li>
+            {% endfor %}
+        </ul>
+      </li>
+
+        {% comment %} <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style='color:black'>
             Courses
           </a>
@@ -19,7 +30,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Another course</a>
           </div>
-        </li>
+        </li> {% endcomment %}
       </ul>
 
       <ul class="navbar-nav navbar-right mr-5">

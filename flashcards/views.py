@@ -56,3 +56,10 @@ def course_registration(request):
     else:
         form = CourseRegistrationForm()
     return render(request, 'course_registration.html', {'form': form})
+
+
+def get_courses(request, course ):
+    flash_cards=FlashCards.filter_by_course(course)
+    all_courses = Courses.objects.all()
+    message = f"{course}"
+    return render(request, 'course.html', {"message":message, "flash_cards":flash_cards, "all_courses":all_courses})

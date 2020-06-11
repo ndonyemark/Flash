@@ -16,10 +16,10 @@ class FlashCards(models.Model):
     def get_single_flash_card(cls, flash_id):
         flash_card=FlashCards.objects.get(id=flash_id)
         return flash_card
-    
+
     def delete_flash_card(self):
         self.delete()
-    
+
     def save_flash_card(self):
         self.save()
 
@@ -31,3 +31,8 @@ class Courses(models.Model):
 
     def __str__(self):
         return self.course_name
+
+    @classmethod
+    def filter_by_course(cls,course):
+        filtered_result = cls.objects.filter(course__course_name__icontains=course)
+        return filtered_result
