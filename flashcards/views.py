@@ -1,12 +1,13 @@
 from django.shortcuts import render, redirect
 from .forms import FlashCreationForm,CourseRegistrationForm
-from .models import FlashCards,Courses
+from .models import FlashCards, Courses
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 @login_required
 def index(request):
     flash_cards=FlashCards.objects.all()
+    print(flash_cards)
     return render(request, 'index.html', {'flash_cards': flash_cards})
 
 @login_required
@@ -56,3 +57,20 @@ def course_registration(request):
     else:
         form = CourseRegistrationForm()
     return render(request, 'course_registration.html', {'form': form})
+
+def get_science(request):
+    courses = FlashCards.objects.filter(flash_course='sciences')
+    return render(request, 'sciences.html', {'courses':courses})
+
+def get_languages(request):
+    course = FlashCards.objects.filter(flash_course='languages')
+    return render(request, 'languages.html', {course:course})
+
+def get_religious(request):
+    course = FlashCards.objects.filter(flash_course='religious')
+    return render(request, 'religious.html', {course:course})
+
+def get_courses(request):
+    courses = Courses.objects.all()
+    print(courses)
+    return render(request, 'navbar.html', {'courses':courses})

@@ -45,7 +45,57 @@
                         </li>
 
                     </ul>
-                </div>
+                </div>{% extends 'base.html' %}
+
+                {% block content %}
+                    <div class="container">
+                      
+                      {% if courses %}
+                      {% for course in courses %}
+                      <div class="row mt-5">
+                          <div class="col-md-1 col-xs-1 col-sm-1"></div>
+                
+                          <div class="col-md-7 col-xs-7 col-sm-7">
+                              <ul class="list-group">
+                                  <li class="list-group-item">
+                                      <a href="{% url 'view_flash' course.id %}">
+                                          <h5>{{course.flash_title}}</h5>
+                
+                                          {% if flashcard.date_updated %}
+                                              <small class="text-info">last_updated: {{course.date_updated}}</small>
+                                          {% else %}
+                                              <small class="text-info">last_updated:{{course.date_created}}</small>
+                                          {% endif %}
+                                      </a>
+                                  </li>
+                
+                              </ul>
+                          </div>
+                
+                          <div class="col-md-1 col-xs-1 col-sm-1">
+                              <a href="{% url 'view_flash' course.id %}"><button type="button" class="btn btn-success btn-lg"><i class="fa fa-folder-open" aria-hidden="true"></i>
+                              </button></a>
+                          </div>
+                
+                          <div class="col-md-1 col-xs-1 col-sm-1">
+                              <a href="{% url 'update_flash' course.id %}"><button type="button" class="btn btn-primary btn-lg"><i class="fa fa-pencil" aria-hidden="true"></i>
+                              </button></a>
+                          </div>
+                
+                          <div class="col-md-1 col-xs-1 col-sm-1">
+                              <a href="{% url 'delete_flash' course.id %}"><button type="button" class="btn btn-danger btn-lg"><i class="fa fa-trash-o" aria-hidden="true"></i>
+                              </button></a>
+                          </div>
+                
+                      </div>
+                  {% endfor %}
+                  {% else %}
+                  <p>Sorry but you have no flash cards on this subject yet</p>
+                {% endif %}
+                          
+                    </div>
+                {% endblock content %}
+                    
 
                 <div class="col-md-1 col-xs-1 col-sm-1">
                     <a href="{% url 'view_flash' flashcard.id %}"><button type="button" class="btn btn-success btn-lg"><i class="fa fa-folder-open" aria-hidden="true"></i>
