@@ -64,3 +64,12 @@ You are free to suggest and improve the code. To make your changes:
 ## Running the tests
 Use the command given below to run automated tests.
 <code> python manage.py test flash </code>
+
+## Known Bugs
+* None at the moment
+
+## License
+
+[MIT License](LICENSE.md)
+Copyright (c) 2020 **Mark Ndonye**, **Maureen Wairimu**
+
