@@ -14,6 +14,6 @@ body {
     position: relative;
 }
 .jumbotron{
-    background-image: url('https://picsum.photos/1900/1267?grayscale');
+    background-image: url('https://picsum.photos/1900/1267?grayscale?blur');
     color: black;
 }

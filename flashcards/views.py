@@ -53,7 +53,7 @@ def course_registration(request):
         form = CourseRegistrationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('post_flash')
+            return redirect('index')
     else:
         form = CourseRegistrationForm()
     return render(request, 'course_registration.html', {'form': form})

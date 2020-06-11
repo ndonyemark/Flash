@@ -16,7 +16,7 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
         <ul class="dropdown-item">
             {% for course in all_courses %}
-                <li style='list-style:none; color:black;'><a href="{% url 'post_flash' %}">{{course.course_name}}</a></li>
+                <li style='list-style:none; color:black;'><a href="{% url 'post_flash' %}" style='color:black'>{{course.course_name}}</a></li><hr>
             {% endfor %}
         </ul>
       </li>
