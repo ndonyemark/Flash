@@ -64,11 +64,11 @@ def get_science(request):
 
 def get_languages(request):
     course = FlashCards.objects.filter(flash_course='languages')
-    return render(request, 'languages.html', {course:course})
+    return render(request, 'languages.html', {'course':course})
 
 def get_religious(request):
     course = FlashCards.objects.filter(flash_course='religious')
-    return render(request, 'religious.html', {course:course})
+    return render(request, 'religious.html', {"course":course})
 
 def get_courses(request):
     courses = Courses.objects.all()
